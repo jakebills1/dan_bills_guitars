@@ -1,5 +1,18 @@
 class Api::GuitarsController < ApplicationController
   def index
+    guitars = Guitar.all
+    data = []
+    guitars.each do |guitar|
+      ob = {
+        name: guitar.name,
+        price: guitar.price, 
+        description: guitar.description, 
+        pictures: guitar.pictures
+      }
+      data << ob
+
+    end
+    render json: data.to_json
   end
 
   def show
