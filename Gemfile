@@ -10,7 +10,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 group :development, :test do
   gem 'pry'
-
+  gem 'faker'
 end
 
 group :development do
