@@ -1,22 +1,22 @@
 import React from 'react';
-import { Grid, } from 'semantic-ui-react';
-import Guitar from './Guitar';
+import { Card, Image, } from 'semantic-ui-react';
 const Guitars = ({ guitars, }) => {
   const renderGuitars = () => { 
     return guitars.map(g => ( 
-      <Grid.Column key={g.id}>
+      <Card key={g.id}>
         <div>{g.name}</div>
         <div>{g.price}</div>
         <div>{g.description}</div>
-      </Grid.Column>
+        <Image src={g.pictures[0].url} massive stackable />
+      </Card>
     )
     )
   }
   return (
     <>
-      <Grid>
+      <Card.Group>
         {renderGuitars()}
-      </Grid>
+      </Card.Group>
     </>
   );
 }
