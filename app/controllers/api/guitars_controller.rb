@@ -7,7 +7,8 @@ class Api::GuitarsController < ApplicationController
         name: guitar.name,
         price: guitar.price, 
         description: guitar.description, 
-        pictures: guitar.pictures
+        pictures: guitar.pictures,
+        id: guitar.id
       }
       data << ob
 
