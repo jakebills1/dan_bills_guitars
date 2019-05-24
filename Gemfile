@@ -9,6 +9,7 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem "pony"
+gem "google-api-client"
 group :development, :test do
   gem 'pry'
   gem 'faker'

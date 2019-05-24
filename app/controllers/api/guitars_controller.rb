@@ -1,4 +1,5 @@
 class Api::GuitarsController < ApplicationController
+  @company_email = 'danbillsguitars@gmail.com'
   def index
     guitars = Guitar.all
     data = []
@@ -14,6 +15,10 @@ class Api::GuitarsController < ApplicationController
 
     end
     render json: data.to_json
+  end
+
+  def email
+    mail(:to => 'danbillsguitars@gmail.com', :body => params[:message])
   end
 
   def show
