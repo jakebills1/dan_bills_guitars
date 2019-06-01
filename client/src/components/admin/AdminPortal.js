@@ -1,43 +1,61 @@
 import React from 'react';
-import axios from 'axios';
-import { Form, } from 'semantic-ui-react';
-class AdminPortal extends React.Component{
-  state = { email: "", password: "", };
-  handleChange = ({ target: { name, value, }}) => {
-    this.setState({ [name]: value});
-  }
+import { AuthConsumer, } from "../../providers/AuthProvider";
+import { Button, Form, Segment, Header, } from 'semantic-ui-react';
+
+class Login extends React.Component {
+  state = { email: '', password: '' }
+  
   handleSubmit = (e) => {
     e.preventDefault();
-    axios.get("/api/admins/sign_in")
-      .then( res => console.log(res))
-      .catch( err => console.log(err))
-    this.props.history.push("/");
+    const { email, password, } = this.state;
+    this.props.auth.handleLogin({ email, password, }, this.props.history);
   }
-  render(){
+  
+  handleChange = (e) => {
+    const { name, value, } = e.target;
+    this.setState({ [name]: value, });
+  }
 
-  return (
-    <Form onSubmit={this.handleSubmit}>
-      <Form.Input
-        name="email"
-        label="Email: "
-        placeholder="Email"
-        required
-        onChange={this.handleChange}
-        value={this.state.email}
-      />
-      <Form.Input
-        name="password"
-        label="Password: "
-        placeholder="Password"
-        type="password"
-        required
-        onChange={this.handleChange}
-        value={this.state.password}
-      />
-      <Form.Button>Submit</Form.Button>
-    </Form>
-  );
-  };
+  render() {
+    const { email, password, } = this.state;
+  
+    return (
+      <Segment basic>
+        <Header as='h1' textAlign='center'>Login</Header>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Input
+            label="Email"
+            autoFocus
+            required         
+            name='email'
+            value={email}
+            placeholder='Email'
+            onChange={this.handleChange}
+          />
+          <Form.Input
+            label="Password"
+            required
+            name='password'
+            value={password}
+            placeholder='Password'
+            type='password'
+            onChange={this.handleChange}
+          />
+          <Segment textAlign='center' basic>
+            <Button primary type='submit'>Submit</Button>
+          </Segment>
+        </Form>
+      </Segment>
+    )
+  }
 }
-export default AdminPortal;
 
+export default class ConnectedLogin extends React.Component {
+  render() {
+    return (
+      <AuthConsumer>
+        { auth => <Login {...this.props} auth={auth} />}
+      </AuthConsumer>
+    )
+  }
+}
