@@ -1,5 +1,6 @@
 class Api::GuitarsController < ApplicationController
   @company_email = 'danbillsguitars@gmail.com'
+  before_action :set_guitar, only: :destroy
   def index
     guitars = Guitar.all
     data = []
@@ -31,6 +32,12 @@ class Api::GuitarsController < ApplicationController
   end
 
   def destroy
+    @guitar.destroy 
+    render json: { message: "deleted"}
   end
+  private
+    def set_guitar
+      @guitar = Guitar.find(params[:id])
+    end
   
 end

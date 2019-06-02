@@ -7,7 +7,9 @@ import Dashboard from './components/Dashboard';
 import Show from './components/Show';
 import FetchUser from './components/FetchUser';
 import AdminPortal from './components/admin/AdminPortal';
+import NoMatch from './components/NoMatch';
 import ProtectedRoute from './components/ProtectedRoute';
+import Edit from './components/admin/Edit';
 import { Switch, Route, } from 'react-router-dom';
 import {  Container, } from 'semantic-ui-react';
 
@@ -24,7 +26,8 @@ function App() {
           <Route path="/contact" exact component={Contact} />
           <Route path="/guitars/:id" exact component={Show} />
           <ProtectedRoute path="/dashboard" exact component={Dashboard} />
-
+          <ProtectedRoute path="/guitars/edit/:id" exact component={Edit} />
+          <Route component={NoMatch} />
         </Switch>
       </Container>
     </FetchUser>
