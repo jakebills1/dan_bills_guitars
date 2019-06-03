@@ -1,6 +1,6 @@
 class Api::GuitarsController < ApplicationController
   @company_email = 'danbillsguitars@gmail.com'
-  before_action :set_guitar, only: :destroy
+  before_action :set_guitar, only: [:destroy, :update]
   def index
     guitars = Guitar.all
     data = []
@@ -29,6 +29,11 @@ class Api::GuitarsController < ApplicationController
   end
 
   def update
+    if @guitar.update(guitar_params)
+      render json: @guitar
+    else
+      render json: @guitar.errors
+    end
   end
 
   def destroy
@@ -38,6 +43,9 @@ class Api::GuitarsController < ApplicationController
   private
     def set_guitar
       @guitar = Guitar.find(params[:id])
+    end
+    def guitar_params
+      params.require(:guitar).permit(:name, :price, :description)
     end
   
 end

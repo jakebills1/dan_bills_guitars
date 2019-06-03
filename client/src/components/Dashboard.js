@@ -27,6 +27,8 @@ const Dashboard = () => {
     axios.delete(`/api/guitars/${id}`)
       .then( console.log( res => console.log(res)))
       .catch( console.log( res => console.log(res)))
+    const cpy = availableGuitars.filter( gtr => gtr.id !== id);
+    setAvailableGuitars(cpy);
   }
   return (
     <>
