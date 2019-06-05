@@ -18,7 +18,7 @@ const Guitars = ({ guitars, }) => {
   return (
     <>
       <Header as="h1" textAlign="center">Available Guitars</Header>
-      <Card.Group>
+      <Card.Group >
         {renderGuitars()}
       </Card.Group>
     </>
