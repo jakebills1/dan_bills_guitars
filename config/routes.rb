@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resources :guitars do
       resources :pictures
     end
-    post "/email", to: "guitars#email"
+    post "/email", to: "messages#create"
   end
 end
