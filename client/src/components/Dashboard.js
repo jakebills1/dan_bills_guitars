@@ -4,9 +4,13 @@ import { Segment, Button} from 'semantic-ui-react';
 import {Link,} from 'react-router-dom';
 const Dashboard = () => {
   const [availableGuitars, setAvailableGuitars] = useState([]);
+  const [messages, setMessages] = useState([]);
   useEffect( () => {
     axios.get("/api/guitars")
       .then( res => setAvailableGuitars(res.data))
+      .catch( res => console.log(res))
+    axios.get("/api/index_messages")
+      .then( res => setMessages(res.data))
       .catch( res => console.log(res))
   }, []
   );
@@ -30,11 +34,26 @@ const Dashboard = () => {
     const cpy = availableGuitars.filter( gtr => gtr.id !== id);
     setAvailableGuitars(cpy);
   }
+  const listMessages = () => {
+    return messages.map( msg => <Segment key={msg.id}>
+        <div><strong>From: </strong> {msg.name}</div>
+        <div><strong>Message: </strong>{msg.body}</div>
+        <Button.Group>
+          <Button color="green"><a href={`mailto:${msg.email}`}></a></Button>
+          <Button color="red">Delete</Button>
+        </Button.Group>
+      </Segment>
+    )
+  }
   return (
     <>
     <h1>Guitars listed for sale</h1>
     <Segment.Group>
       { listAvailableGuitars() } 
+    </Segment.Group>
+    <h1>Recent Messages</h1>
+    <Segment.Group>
+      { listMessages() }
     </Segment.Group>
     </>
   );

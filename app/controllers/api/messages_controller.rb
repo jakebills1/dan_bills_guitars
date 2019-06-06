@@ -7,6 +7,10 @@ class Api::MessagesController < ApplicationController
       render json: message.errors
     end
   end
+
+  def index
+    render json: Message.all 
+  end
   
   private
   
