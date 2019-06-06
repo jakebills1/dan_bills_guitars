@@ -9,7 +9,7 @@ const Dashboard = () => {
     axios.get("/api/guitars")
       .then( res => setAvailableGuitars(res.data))
       .catch( res => console.log(res))
-    axios.get("/api/index_messages")
+    axios.get("/api/messages")
       .then( res => setMessages(res.data))
       .catch( res => console.log(res))
   }, []
@@ -34,13 +34,20 @@ const Dashboard = () => {
     const cpy = availableGuitars.filter( gtr => gtr.id !== id);
     setAvailableGuitars(cpy);
   }
+  const deleteMessage = (id) => {
+    axios.delete(`/api/messages/${id}`)
+      .then( console.log( res => console.log(res)))
+      .catch( console.log( res => console.log(res)))
+    const cpy = messages.filter( msg => msg.id !== id);
+    setMessages(cpy);
+  }
   const listMessages = () => {
     return messages.map( msg => <Segment key={msg.id}>
         <div><strong>From: </strong> {msg.name}</div>
         <div><strong>Message: </strong>{msg.body}</div>
         <Button.Group>
-          <Button color="green"><a href={`mailto:${msg.email}`}></a></Button>
-          <Button color="red">Delete</Button>
+          <Button color="green"><a href={`mailto:${msg.email}`} style={{ color: "white", textDecoration: "none", }}>Reply</a></Button>
+          <Button color="red" onClick={ () => deleteMessage(msg.id)}>Delete</Button>
         </Button.Group>
       </Segment>
     )

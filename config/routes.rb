@@ -5,6 +5,6 @@ Rails.application.routes.draw do
       resources :pictures
     end
     post "/email", to: "messages#create"
-    get "/index_messages", to: "messages#index"
+    resources :messages, only: [:destroy, :index]
   end
 end
