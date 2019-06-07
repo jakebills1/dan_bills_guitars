@@ -1,8 +1,5 @@
-import React from 'react';
+import React from "react";
 const NoMatch = () => {
-  return (
-    <div>This is not the page you're looking for</div>
-  );
-}
+  return <div>This is not the page you're looking for</div>;
+};
 export default NoMatch;
-

@@ -20,7 +20,7 @@ class Api::MessagesController < ApplicationController
   private
   
   def message_params
-    params.require(:message).permit(:name, :email, :body)
+    params.require(:message).permit(:name, :email, :body, :subject)
   end
 
   def set_message
