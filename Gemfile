@@ -10,9 +10,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem "devise_token_auth", "~> 1.0.0"
 gem "pony"
 gem "google-api-client"
+gem 'cloudinary'
 group :development, :test do
   gem 'pry'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do

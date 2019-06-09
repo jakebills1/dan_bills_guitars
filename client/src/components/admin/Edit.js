@@ -16,6 +16,13 @@ class Edit extends Component {
       price: this.state.price,
       description: this.state.description
     };
+    const { files } = this.state;
+    const dataArr = [];
+    files.map(file => {
+      let data = new FormData();
+      data.append("file", file);
+      dataArr.push(data);
+    });
     const {
       location: {
         state: { id }
@@ -26,14 +33,19 @@ class Edit extends Component {
       .patch(`/api/guitars/${id}`, gtr)
       .then(res => console.log(res))
       .catch(res => console.log(res));
-    // add call to pictures controller to add pictures, if files.length > 0
+    if (files.length > 0) {
+      axios
+        .post(`/api/guitars/${id}/pictures`, dataArr)
+        .then(res => console.log(res))
+        .catch(res => console.log(res));
+    }
+
     goBack();
   };
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
   addFile = file => {
-    debugger;
     const { files } = this.state;
     this.setState({ files: [...files, file] });
   };
