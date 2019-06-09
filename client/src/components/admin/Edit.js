@@ -17,12 +17,6 @@ class Edit extends Component {
       description: this.state.description
     };
     const { files } = this.state;
-    const dataArr = [];
-    files.map(file => {
-      let data = new FormData();
-      data.append("file", file);
-      dataArr.push(data);
-    });
     const {
       location: {
         state: { id }
@@ -34,10 +28,11 @@ class Edit extends Component {
       .then(res => console.log(res))
       .catch(res => console.log(res));
     if (files.length > 0) {
-      axios
-        .post(`/api/guitars/${id}/pictures`, dataArr)
-        .then(res => console.log(res))
-        .catch(res => console.log(res));
+      let data = new FormData();
+      files.map((file, index) => {
+        data.append(`file${index}`, file);
+      });
+      axios.post(`/api/guitars/${id}/pictures`, data);
     }
 
     goBack();

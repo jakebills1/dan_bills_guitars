@@ -6,19 +6,22 @@ class Api::PicturesController < ApplicationController
   end
 
   def create
-    binding.pry
-    file = params[:file]
-    guitar = Guitar.find(params[:guitar_id])
-    # must loop through for each file in files
-    if file
-      begin
-        ext = File.extname(file.tempfile)
-        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
-        user.image = cloud_image['secure_url']
-        guitar.pictures.create(url: cloud_image['secure_url'])
-      rescue => e
-        render json: { errors: e }, status: 422
+    file_counter = 0
+    file_key = "file".concat(file_counter.to_s).to_sym
+    while params[file_key] != nil
+      file = params[file_key]
+      guitar = Guitar.find(params[:guitar_id])
+      if file
+        begin
+          ext = File.extname(file.tempfile)
+          cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
+          guitar.pictures.create(url: cloud_image['secure_url'])
+        rescue => e
+          render json: { errors: e }, status: 422
+        end
       end
+      file_counter += 1
+      file_key = "file".concat(file_counter.to_s).to_sym
     end
   end
 
