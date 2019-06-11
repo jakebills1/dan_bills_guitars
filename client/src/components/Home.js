@@ -1,8 +1,6 @@
 import React from "react";
 import Background from '../assets/ian-tormo-321516-unsplash.jpg'
-import { Image, } from "semantic-ui-react";
 const Home = () => {
-  document.body.style.background = '#271810';
   return (
     <>
       <div style={styles.home_page_splash} >

@@ -10,11 +10,11 @@ import AdminPortal from './components/admin/AdminPortal';
 import NoMatch from './components/NoMatch';
 import ProtectedRoute from './components/ProtectedRoute';
 import Edit from './components/admin/Edit';
-import Background from './assets/ian-tormo-321516-unsplash.jpg';
 import { Switch, Route, } from 'react-router-dom';
 import {  Container, } from 'semantic-ui-react';
 
 function App() {
+  document.body.style.background = '#271810';
   return (
     <>
     <Navbar />
