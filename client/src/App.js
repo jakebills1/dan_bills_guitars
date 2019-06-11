@@ -10,15 +10,16 @@ import AdminPortal from './components/admin/AdminPortal';
 import NoMatch from './components/NoMatch';
 import ProtectedRoute from './components/ProtectedRoute';
 import Edit from './components/admin/Edit';
+import Background from './assets/ian-tormo-321516-unsplash.jpg';
 import { Switch, Route, } from 'react-router-dom';
 import {  Container, } from 'semantic-ui-react';
 
 function App() {
   return (
     <>
-      <Navbar />
+    <Navbar />
+    <Container>
       <FetchUser>
-      <Container>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/admin" exact component={AdminPortal} />
@@ -29,8 +30,8 @@ function App() {
           <ProtectedRoute path="/guitars/edit/:id" exact component={Edit} />
           <Route component={NoMatch} />
         </Switch>
-      </Container>
-    </FetchUser>
+      </FetchUser>
+    </Container>
     </>
   );
 }
