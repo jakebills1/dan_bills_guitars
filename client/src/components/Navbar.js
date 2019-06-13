@@ -35,7 +35,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div >
+      <div>
         <Menu style={{ backgroundColor: "#954520" }}>
           <Menu.Item>
             <Image src={Logo} avatar />
@@ -90,4 +90,4 @@ const styles = {
     color: "black",
     textDecoration: "none"
   }
-}
+};

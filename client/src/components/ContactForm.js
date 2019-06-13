@@ -91,8 +91,8 @@ class ContactForm extends Component {
             name="body"
             value={body}
           />
-          <div style={{ textAlign: "center", }}>
-            <Form.Button color="brown" >Send</Form.Button>
+          <div style={{ textAlign: "center" }}>
+            <Form.Button color="brown">Send</Form.Button>
           </div>
         </Form>
       </>
