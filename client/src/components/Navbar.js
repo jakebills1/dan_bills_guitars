@@ -2,7 +2,7 @@ import React from "react";
 import { AuthConsumer } from "../providers/AuthProvider";
 import { Menu, Image } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
-import Logo from '../assets/new_logo_transparent.png';
+import Logo from "../assets/new_logo_transparent.png";
 
 class Navbar extends React.Component {
   rightNavItems = () => {
@@ -32,12 +32,11 @@ class Navbar extends React.Component {
   };
 
   render() {
-    
     return (
-      <div style={{ backgroundColor: "#954520",}}>
+      <div style={{ backgroundColor: "#954520" }}>
         <Menu pointing secondary>
           <Menu.Item>
-            <Image src={Logo} avatar/>
+            <Image src={Logo} avatar />
           </Menu.Item>
           <Link to="/">
             <Menu.Item
