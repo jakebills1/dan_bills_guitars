@@ -30,7 +30,7 @@ class Edit extends Component {
     if (files.length > 0) {
       let data = new FormData();
       files.map((file, index) => {
-        data.append(`file${index}`, file);
+        return data.append(`file${index}`, file);
       });
       axios.post(`/api/guitars/${id}/pictures`, data);
     }

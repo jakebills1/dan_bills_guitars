@@ -25,12 +25,12 @@ const Guitars = ({ guitars }) => {
     ));
   };
   return (
-    <>
+    <div style={{ backgroundColor: "#bd9476", }}>
       <Header as="h1" textAlign="center">
-        Available Guitars
+        Handmade Guitars Available For Purchase
       </Header>
       <Card.Group>{renderGuitars()}</Card.Group>
-    </>
+    </div>
   );
 };
 export default Guitars;

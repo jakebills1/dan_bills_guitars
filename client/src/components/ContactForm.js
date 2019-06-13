@@ -30,7 +30,7 @@ class ContactForm extends Component {
     });
   };
   produceFlash = status => {
-    if (status == "200") {
+    if (parseInt(status, 10) === 200) {
       this.setState({ flash: "Message Sent!", showFlash: true, success: true });
     } else {
       this.setState({

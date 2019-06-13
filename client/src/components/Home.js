@@ -12,7 +12,7 @@ const Home = () => {
             custom builds.
           </p>
         </div>
-        <img src={Background} style={styles.home_page_image} />
+        <img src={Background} style={styles.home_page_image} alt="guitar soundhole"/>
       </div>
     </>
   );
