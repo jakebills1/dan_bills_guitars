@@ -13,13 +13,15 @@ class Navbar extends React.Component {
     if (user) {
       return (
         <Menu.Menu position="right">
-          <Link to="/dashboard">
-            <Menu.Item
-              name="dashboard"
-              id="dashboard"
-              active={this.props.location.pathname === "/dashboard"}
-            />
-          </Link>
+          <Menu.Item
+            name="dashboard"
+            id="dashboard"
+            active={this.props.location.pathname === "/dashboard"}
+          >
+            <Link to="/dashboard" style={styles.link}>
+              Dashboard
+            </Link>
+          </Menu.Item>
           <Menu.Item
             name="logout"
             onClick={() => handleLogout(this.props.history)}
@@ -33,32 +35,38 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#954520" }}>
-        <Menu pointing secondary>
+      <div >
+        <Menu style={{ backgroundColor: "#954520" }}>
           <Menu.Item>
             <Image src={Logo} avatar />
           </Menu.Item>
-          <Link to="/">
-            <Menu.Item
-              name="home"
-              id="home"
-              active={this.props.location.pathname === "/"}
-            />
-          </Link>
-          <Link to="/gallery">
-            <Menu.Item
-              name="gallery"
-              id="gallery"
-              active={this.props.location.pathname === "/gallery"}
-            />
-          </Link>
-          <Link to="/contact">
-            <Menu.Item
-              name="contact"
-              id="contact"
-              active={this.props.location.pathname === "/contact"}
-            />
-          </Link>
+          <Menu.Item
+            name="home"
+            id="home"
+            active={this.props.location.pathname === "/"}
+          >
+            <Link to="/" style={styles.link}>
+              Home
+            </Link>
+          </Menu.Item>
+          <Menu.Item
+            name="gallery"
+            id="gallery"
+            active={this.props.location.pathname === "/gallery"}
+          >
+            <Link to="/gallery" style={styles.link}>
+              Gallery
+            </Link>
+          </Menu.Item>
+          <Menu.Item
+            name="contact"
+            id="contact"
+            active={this.props.location.pathname === "/contact"}
+          >
+            <Link to="/contact" style={styles.link}>
+              Contact
+            </Link>
+          </Menu.Item>
           {this.rightNavItems()}
         </Menu>
       </div>
@@ -77,3 +85,9 @@ export class ConnectedNavbar extends React.Component {
 }
 
 export default withRouter(ConnectedNavbar);
+const styles = {
+  link: {
+    color: "black",
+    textDecoration: "none"
+  }
+}
