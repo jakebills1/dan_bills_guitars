@@ -56,9 +56,10 @@ class ContactForm extends Component {
     } = this.state;
     return (
       <>
+        <br />
         {showFlash && <Flash message={flash} success={success} />}
         <Form onSubmit={this.handleSubmit}>
-          <Header as="h1">Send a Message: </Header>
+          <Header>Send us a Message: </Header>
           <Form.Group widths="equal">
             <Form.Input
               type="email"
@@ -90,7 +91,9 @@ class ContactForm extends Component {
             name="body"
             value={body}
           />
-          <Form.Button>Send</Form.Button>
+          <div style={{ textAlign: "center", }}>
+            <Form.Button color="brown" >Send</Form.Button>
+          </div>
         </Form>
       </>
     );
