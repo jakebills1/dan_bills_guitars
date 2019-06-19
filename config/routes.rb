@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     post "/email", to: "messages#create"
     resources :messages, only: [:destroy, :index]
   end
+  get '*other', to: 'static#index'
 end
