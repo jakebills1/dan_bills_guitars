@@ -1,6 +1,5 @@
 import React from "react";
 import { Header, Divider, Image } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 const Guitars = ({ guitars }) => {
   const renderGuitars = () => {
     return guitars.map(g => (
@@ -20,7 +19,13 @@ const Guitars = ({ guitars }) => {
     return arr.map(pic => <Image src={pic.url} />);
   };
   return (
-    <div style={{ backgroundColor: "#bd9476", padding: "0 5px" }}>
+    <div
+      style={{
+        backgroundColor: "#bd9476",
+        padding: "20px 5px 0 5px",
+        height: "auto"
+      }}
+    >
       <Header as="h1">Handmade Guitars Available For Purchase</Header>
       {renderGuitars()}
     </div>

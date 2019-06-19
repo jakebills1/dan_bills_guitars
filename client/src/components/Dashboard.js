@@ -95,12 +95,11 @@ const Dashboard = () => {
         backgroundColor: "#bd9476",
         padding: "20px 5px 0 5px",
         height: "auto",
-        display: "flex", 
+        display: "flex",
         justifyContent: "space-evenly"
-
       }}
     >
-      <div >
+      <div>
         <h1>Guitars listed for sale</h1>
         <Segment.Group>{listAvailableGuitars()}</Segment.Group>
       </div>
