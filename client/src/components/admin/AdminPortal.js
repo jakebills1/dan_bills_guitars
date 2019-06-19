@@ -20,7 +20,13 @@ class Login extends React.Component {
     const { email, password } = this.state;
 
     return (
-      <Segment basic>
+      <div
+        style={{
+          backgroundColor: "#bd9476",
+          padding: "20px 5px 0 5px",
+          height: "100vh"
+        }}
+      >
         <Header as="h1" textAlign="center">
           Login
         </Header>
@@ -44,12 +50,12 @@ class Login extends React.Component {
             onChange={this.handleChange}
           />
           <Segment textAlign="center" basic>
-            <Button primary type="submit">
+            <Form.Button color="brown" type="submit">
               Submit
-            </Button>
+            </Form.Button>
           </Segment>
         </Form>
-      </Segment>
+      </div>
     );
   }
 }

@@ -46,7 +46,13 @@ class Edit extends Component {
   };
   render() {
     return (
-      <>
+      <div
+        style={{
+          backgroundColor: "#bd9476",
+          padding: "20px 5px 0 5px",
+          height: "100vh"
+        }}
+      >
         <Form onSubmit={this.handleSubmit}>
           <Header as="h1">Edit Listing: </Header>
           <Form.Group widths="equal">
@@ -66,10 +72,12 @@ class Edit extends Component {
             value={this.state.description}
             onChange={this.handleChange}
           />
-          <Form.Button>Submit</Form.Button>
+          <div style={{ textAlign: "center" }}>
+            <Form.Button color="brown">Submit</Form.Button>
+          </div>
         </Form>
         <Dropzone addFile={this.addFile} />
-      </>
+      </div>
     );
   }
 }
