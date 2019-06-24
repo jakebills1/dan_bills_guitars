@@ -14,8 +14,11 @@ class Api::PicturesController < ApplicationController
       if file
         begin
           ext = File.extname(file.tempfile)
-          cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
-          guitar.pictures.create(url: cloud_image['secure_url'])
+          cloud_image = Cloudinary::Uploader.upload(file,
+           public_id: file.original_filename,
+           secure: true,
+           transformations: {})
+          guitar.pictures.create(url: cloud_image['secure_url'], width: cloud_image['width'], height: cloud_image['height'])
         rescue => e
           render json: { errors: e }, status: 422
         end
