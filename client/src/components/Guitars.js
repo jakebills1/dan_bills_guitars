@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Gallery from "react-photo-gallery";
-import { Header, Divider, Image } from "semantic-ui-react";
+import Carousel, { Modal, ModalGateway } from "react-images";
+import { Header, Divider, } from "semantic-ui-react";
 const Guitars = ({ guitars }) => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const openLightbox = (event, obj) => {
+    setCurrentImage(obj.index);
+    setViewerIsOpen(true);
+  };
+  const closeLightbox = () => {
+    setCurrentImage(0);
+    setViewerIsOpen(false);
+  };
   const renderGuitars = () => {
     return guitars.map(g => {
       const pictures = g.pictures.map(pic => {
-        return { src: pic.url, width: pic.width, height: pic.height, };
+        return { src: pic.url, width: pic.width, height: pic.height };
       });
-      debugger
       return (
         <>
           <div key={g.id}>
@@ -15,15 +25,22 @@ const Guitars = ({ guitars }) => {
               {g.name} | {g.year}
             </h3>
             <p>{g.description}</p>
-            <Gallery photos={pictures} />
+            <Gallery photos={pictures} onClick={openLightbox} />
+            <ModalGateway>
+              {viewerIsOpen ? (
+                <Modal onClose={closeLightbox}>
+                  <Carousel
+                    currentIndex={currentImage}
+                    views={pictures}
+                  />
+                </Modal>
+              ) : null}
+            </ModalGateway>
           </div>
           <Divider />
         </>
       );
     });
-  };
-  const renderImages = arr => {
-    return arr.map(pic => <Image src={pic.url} />);
   };
   return (
     <div
