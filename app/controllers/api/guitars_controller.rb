@@ -27,6 +27,12 @@ class Api::GuitarsController < ApplicationController
   end
 
   def create
+    guitar = guitar.create(guitar_params)
+    if guitar.save
+      render json: guitar
+    else
+      render json: guitar.errors
+    end
   end
 
   def update

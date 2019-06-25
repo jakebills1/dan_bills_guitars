@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Segment, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import NewGuitarForm from "./admin/NewGuitarForm";
 const Dashboard = () => {
   const [availableGuitars, setAvailableGuitars] = useState([]);
   const [messages, setMessages] = useState([]);
@@ -99,6 +100,7 @@ const Dashboard = () => {
         justifyContent: "space-evenly"
       }}
     >
+      <NewGuitarForm />
       <div>
         <h1>Guitars listed for sale</h1>
         <Segment.Group>{listAvailableGuitars()}</Segment.Group>

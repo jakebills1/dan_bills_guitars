@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
-import { Header, Divider, } from "semantic-ui-react";
+import { Header, Divider } from "semantic-ui-react";
 const Guitars = ({ guitars }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
@@ -29,10 +29,7 @@ const Guitars = ({ guitars }) => {
             <ModalGateway>
               {viewerIsOpen ? (
                 <Modal onClose={closeLightbox}>
-                  <Carousel
-                    currentIndex={currentImage}
-                    views={pictures}
-                  />
+                  <Carousel currentIndex={currentImage} views={pictures} />
                 </Modal>
               ) : null}
             </ModalGateway>
