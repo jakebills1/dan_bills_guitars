@@ -27,7 +27,8 @@ class Api::GuitarsController < ApplicationController
   end
 
   def create
-    guitar = guitar.create(guitar_params)
+    guitar = Guitar.new(guitar_params)
+    binding.pry
     if guitar.save
       render json: guitar
     else
@@ -52,7 +53,7 @@ class Api::GuitarsController < ApplicationController
       @guitar = Guitar.find(params[:id])
     end
     def guitar_params
-      params.require(:guitar).permit(:name, :price, :description)
+      params.require(:guitar).permit(:name, :price, :description, :year)
     end
   
 end
