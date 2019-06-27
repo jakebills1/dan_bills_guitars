@@ -1,15 +1,22 @@
 import React, { useState } from "react";
+import Flash from "../Flash";
 import Dropzone from "./Dropzone";
-import { Form } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import axios from "axios";
 const NewGuitarForm = () => {
+  // form state
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [year, setYear] = useState("");
+  // dropzone state
   const [showDropzone, setShowDropzone] = useState(false);
   const [files, setFiles] = useState([]);
   const [id, setId] = useState("");
+  // flash message state
+  const [showFlash, setShowFlash] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState("");
   const addFile = file => setFiles([file, ...files]);
   const handleSubmit = e => {
     e.preventDefault();
@@ -29,7 +36,18 @@ const NewGuitarForm = () => {
       files.map((file, index) => {
         return data.append(`file${index}`, file);
       });
-      axios.post(`/api/guitars/${id}/pictures`, data);
+      axios
+        .post(`/api/guitars/${id}/pictures`, data)
+        .then(res => {
+          setSuccess(true);
+          setMessage("New Guitar Added!");
+        })
+        .catch(err => {
+          setMessage("We have encountered a problem");
+          setSuccess(false);
+        });
+      setShowFlash(true);
+      setShowDropzone(false);
     }
   };
   return (
@@ -37,7 +55,11 @@ const NewGuitarForm = () => {
       {showDropzone ? (
         <>
           <Dropzone addFile={addFile} />
-          <button onClick={submitPictures}>Submit Pictures</button>
+          <div style={{ textAlign: "center" }}>
+            <Button color="brown" onClick={submitPictures}>
+              Submit Pictures
+            </Button>
+          </div>
         </>
       ) : (
         <Form onSubmit={handleSubmit}>
@@ -68,9 +90,12 @@ const NewGuitarForm = () => {
             onChange={e => setDescription(e.target.value)}
             required
           />
-          <Form.Button>Submit Info & Add a Picture</Form.Button>
+          <div style={{ textAlign: "center" }}>
+            <Form.Button color="brown">Submit Info & Add a Picture</Form.Button>
+          </div>
         </Form>
       )}
+      {showFlash && <Flash success={success} message={message} />}
     </>
   );
 };

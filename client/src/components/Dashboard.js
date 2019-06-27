@@ -95,19 +95,24 @@ const Dashboard = () => {
       style={{
         backgroundColor: "#bd9476",
         padding: "20px 5px 0 5px",
-        height: "auto",
-        display: "flex",
-        justifyContent: "space-evenly"
+        height: "auto"
       }}
     >
       <NewGuitarForm />
-      <div>
-        <h1>Guitars listed for sale</h1>
-        <Segment.Group>{listAvailableGuitars()}</Segment.Group>
-      </div>
-      <div>
-        <h1>Recent Messages</h1>
-        <Segment.Group>{listMessages()}</Segment.Group>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly"
+        }}
+      >
+        <div>
+          <h1>Guitars listed for sale</h1>
+          <Segment.Group>{listAvailableGuitars()}</Segment.Group>
+        </div>
+        <div>
+          <h1>Recent Messages</h1>
+          <Segment.Group>{listMessages()}</Segment.Group>
+        </div>
       </div>
     </div>
   );
