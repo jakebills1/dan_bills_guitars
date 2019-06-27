@@ -28,7 +28,6 @@ class Api::GuitarsController < ApplicationController
 
   def create
     guitar = Guitar.new(guitar_params)
-    binding.pry
     if guitar.save
       render json: guitar
     else

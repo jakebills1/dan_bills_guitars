@@ -8,11 +8,14 @@ const NewGuitarForm = () => {
   const [description, setDescription] = useState("");
   const [year, setYear] = useState("");
   const [showDropzone, setShowDropzone] = useState(false);
+  const [files, setFiles] = useState([]);
+  const [id, setId] = useState("");
+  const addFile = file => setFiles([file, ...files]);
   const handleSubmit = e => {
     e.preventDefault();
     axios
       .post("/api/guitars", { name, price, description, year })
-      .then(res => console.log(res))
+      .then(res => setId(res.data.id))
       .catch(err => console.log(err));
     setName("");
     setPrice("");
@@ -20,10 +23,22 @@ const NewGuitarForm = () => {
     setYear("");
     setShowDropzone(true);
   };
+  const submitPictures = () => {
+    if (files.length > 0) {
+      let data = new FormData();
+      files.map((file, index) => {
+        return data.append(`file${index}`, file);
+      });
+      axios.post(`/api/guitars/${id}/pictures`, data);
+    }
+  };
   return (
     <>
       {showDropzone ? (
-        <Dropzone />
+        <>
+          <Dropzone addFile={addFile} />
+          <button onClick={submitPictures}>Submit Pictures</button>
+        </>
       ) : (
         <Form onSubmit={handleSubmit}>
           <h1>Add a new listing:</h1>
