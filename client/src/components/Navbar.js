@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthConsumer } from "../providers/AuthProvider";
-import { Menu, Image } from "semantic-ui-react";
+import { Menu, Image, Dropdown } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import Logo from "../assets/new_logo_transparent.png";
 
@@ -34,9 +34,9 @@ class Navbar extends React.Component {
   };
 
   render() {
-    return (
+    return window.innerWidth > 500 ? (
       <div>
-        <Menu style={{ backgroundColor: "#954520" }}>
+        <Menu stackable style={{ backgroundColor: "#954520" }}>
           <Menu.Item>
             <Image src={Logo} avatar />
           </Menu.Item>
@@ -69,6 +69,10 @@ class Navbar extends React.Component {
           </Menu.Item>
           {this.rightNavItems()}
         </Menu>
+      </div>
+    ) : (
+      <div style={{ backgroundColor: "#954520" }}>
+        <Image src={Logo} size="tiny" />
       </div>
     );
   }

@@ -12,10 +12,12 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Edit from "./components/admin/Edit";
 import { Switch, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
+import { useWindowWidth } from "./hooks/useWindowWidth";
 
 function App() {
   document.body.style.background = "#271810";
-  return (
+  const width = useWindowWidth();
+  return width > 500 ? (
     <>
       <Navbar />
       <Container>
@@ -32,6 +34,22 @@ function App() {
           </Switch>
         </FetchUser>
       </Container>
+    </>
+  ) : (
+    <>
+      <Navbar />
+      <FetchUser>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/admin" exact component={AdminPortal} />
+          <Route path="/gallery" exact component={Gallery} />
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/guitars/:id" exact component={Show} />
+          <ProtectedRoute path="/dashboard" exact component={Dashboard} />
+          <ProtectedRoute path="/guitars/edit/:id" exact component={Edit} />
+          <Route component={NoMatch} />
+        </Switch>
+      </FetchUser>
     </>
   );
 }

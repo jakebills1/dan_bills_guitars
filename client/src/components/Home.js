@@ -1,6 +1,8 @@
 import React from "react";
 import Background from "../assets/ian-tormo-321516-unsplash.jpg";
+import { useWindowWidth } from '../hooks/useWindowWidth';
 const Home = () => {
+  const width = useWindowWidth();
   return (
     <>
       <div style={styles.home_page_splash}>
@@ -23,13 +25,6 @@ const Home = () => {
 };
 export default Home;
 const styles = {
-  home_page_background: {
-    backgroundImage: `url(${Background})`,
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    height: "100%"
-  },
   home_page_text: {
     color: "white",
     position: "absolute",
