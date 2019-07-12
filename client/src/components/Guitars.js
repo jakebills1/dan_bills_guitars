@@ -5,6 +5,7 @@ import { Header, Divider } from "semantic-ui-react";
 const Guitars = ({ guitars }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const [pictures, setPictures] = useState([]);
   const openLightbox = (event, obj) => {
     setCurrentImage(obj.index);
     setViewerIsOpen(true);
@@ -20,19 +21,12 @@ const Guitars = ({ guitars }) => {
       });
       return (
         <>
-          <div key={g.id}>
+          <div key={g.id} onClick={() => setPictures(pictures)}>
             <h3>
               {g.name} | {g.year}
             </h3>
             <p>{g.description}</p>
             <Gallery photos={pictures} onClick={openLightbox} />
-            <ModalGateway>
-              {viewerIsOpen ? (
-                <Modal onClose={closeLightbox}>
-                  <Carousel currentIndex={currentImage} views={pictures} />
-                </Modal>
-              ) : null}
-            </ModalGateway>
           </div>
           <Divider />
         </>
@@ -49,6 +43,13 @@ const Guitars = ({ guitars }) => {
     >
       <Header as="h1">Handmade Guitars Available For Purchase</Header>
       {renderGuitars()}
+      <ModalGateway>
+        {viewerIsOpen && (
+          <Modal onClose={closeLightbox}>
+            <Carousel currentIndex={currentImage} views={pictures} />
+          </Modal>
+        )}
+      </ModalGateway>
     </div>
   );
 };

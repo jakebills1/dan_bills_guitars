@@ -1,6 +1,6 @@
 import React from "react";
 import Background from "../assets/ian-tormo-321516-unsplash.jpg";
-import { useWindowWidth } from '../hooks/useWindowWidth';
+import { useWindowWidth } from "../hooks/useWindowWidth";
 const Home = () => {
   const width = useWindowWidth();
   return (
