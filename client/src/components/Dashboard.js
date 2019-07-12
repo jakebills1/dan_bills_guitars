@@ -3,7 +3,9 @@ import axios from "axios";
 import { Segment, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import NewGuitarForm from "./admin/NewGuitarForm";
+import { useWindowWidth } from "../hooks/useWindowWidth";
 const Dashboard = () => {
+  const width = useWindowWidth();
   const [availableGuitars, setAvailableGuitars] = useState([]);
   const [messages, setMessages] = useState([]);
   useEffect(() => {
@@ -17,8 +19,6 @@ const Dashboard = () => {
       .catch(res => console.log(res));
   }, []);
   const listAvailableGuitars = () => {
-    // lists guitars available for sale, with options to delete or edit details
-
     return availableGuitars.map(gtr => (
       <Segment key={gtr.id}>
         <div>
@@ -100,10 +100,17 @@ const Dashboard = () => {
     >
       <NewGuitarForm />
       <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly"
-        }}
+        style={
+          width > 500
+            ? {
+                display: "flex",
+                justifyContent: "space-evenly"
+              }
+            : {
+                display: "flex",
+                flexDirection: "column"
+              }
+        }
       >
         <div>
           <h1>Guitars listed for sale</h1>

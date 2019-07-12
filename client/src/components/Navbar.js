@@ -1,10 +1,13 @@
 import React from "react";
 import { AuthConsumer } from "../providers/AuthProvider";
-import { Menu, Image, Dropdown } from "semantic-ui-react";
+import { Menu, Image, Dropdown, Icon, Sidebar } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import Logo from "../assets/new_logo_transparent.png";
 
 class Navbar extends React.Component {
+  state = {
+    visible: false
+  };
   rightNavItems = () => {
     const {
       auth: { user, handleLogout }
@@ -34,6 +37,9 @@ class Navbar extends React.Component {
   };
 
   render() {
+    const {
+      auth: { handleLogout, user }
+    } = this.props;
     return window.innerWidth > 500 ? (
       <div>
         <Menu stackable style={{ backgroundColor: "#954520" }}>
@@ -71,9 +77,81 @@ class Navbar extends React.Component {
         </Menu>
       </div>
     ) : (
-      <div style={{ backgroundColor: "#954520" }}>
-        <Image src={Logo} size="tiny" />
-      </div>
+      <>
+        <div
+          style={{
+            backgroundColor: "#954520",
+            display: "flex",
+            justifyContent: "space-between"
+          }}
+        >
+          <Image src={Logo} size="tiny" />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Icon
+              name="bars"
+              size="big"
+              onClick={() => this.setState({ visible: !this.state.visible })}
+            />
+          </div>
+        </div>
+        <Sidebar
+          as={Menu}
+          visible={this.state.visible}
+          vertical
+          style={{ backgroundColor: "#954520" }}
+        >
+          <Menu.Item
+            name="home"
+            id="home"
+            active={this.props.location.pathname === "/"}
+          >
+            <Link to="/" style={styles.link}>
+              Home
+            </Link>
+          </Menu.Item>
+          <Menu.Item
+            name="gallery"
+            id="gallery"
+            active={this.props.location.pathname === "/gallery"}
+          >
+            <Link to="/gallery" style={styles.link}>
+              Gallery
+            </Link>
+          </Menu.Item>
+          <Menu.Item
+            name="contact"
+            id="contact"
+            active={this.props.location.pathname === "/contact"}
+          >
+            <Link to="/contact" style={styles.link}>
+              Contact
+            </Link>
+          </Menu.Item>
+          {user && (
+            <>
+              <Menu.Item
+                name="dashboard"
+                id="dashboard"
+                active={this.props.location.pathname === "/dashboard"}
+              >
+                <Link to="/dashboard" style={styles.link}>
+                  Dashboard
+                </Link>
+              </Menu.Item>
+              <Menu.Item
+                name="logout"
+                onClick={() => handleLogout(this.props.history)}
+              />
+            </>
+          )}
+        </Sidebar>
+      </>
     );
   }
 }
