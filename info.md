@@ -4,10 +4,12 @@
   * year: 2012
   * details: 
     * sitka spruce top, from alaska
+      * wood brought from alaska 20 years ago, sold to Local Music
     * wenge fingerboard and bridge and headplate
     * mahogany neck
       * with ebony inlay
     * tiger eye mahogonany back and sides
+    
   * price: $1200
 * octave mandolin
   * id: 02
