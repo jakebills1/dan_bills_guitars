@@ -105,6 +105,7 @@ class Navbar extends React.Component {
           visible={this.state.visible}
           vertical
           style={{ backgroundColor: "#954520" }}
+          onClick={() => this.setState({ visible: !this.state.visible})}
         >
           <Menu.Item
             name="home"
