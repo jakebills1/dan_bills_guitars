@@ -1,9 +1,10 @@
 import React from "react";
 import Background from "../assets/ian-tormo-321516-unsplash.jpg";
+import MobileBackground from "../assets/IMG_20190521_185026.jpg.jpg"
 import { useWindowWidth } from "../hooks/useWindowWidth";
 const Home = () => {
   const width = useWindowWidth();
-  return (
+  return width > 500 ? (
     <>
       <div style={styles.home_page_splash}>
         <div style={styles.home_page_text}>
@@ -21,7 +22,15 @@ const Home = () => {
         />
       </div>
     </>
-  );
+  )
+  :
+  (
+    <>
+      <div>
+        <h1 style={styles.mobile.text}><div>Dan</div><div>Bills</div><div>Guitars</div></h1>
+      </div>
+    </>
+  )
 };
 export default Home;
 const styles = {
@@ -42,5 +51,14 @@ const styles = {
   home_page_image: {
     height: "100%",
     width: "100%"
+  },
+  mobile: {
+    image : {
+      width: "100%",
+    },
+    text: {
+      color: "",
+      fontSize: "50px"
+    }
   }
 };
