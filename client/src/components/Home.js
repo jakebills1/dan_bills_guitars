@@ -2,63 +2,63 @@ import React from "react";
 import Background from "../assets/ian-tormo-321516-unsplash.jpg";
 import MobileBackground from "../assets/IMG_20190521_185026.jpg.jpg"
 import { useWindowWidth } from "../hooks/useWindowWidth";
+import styled from "styled-components";
 const Home = () => {
   const width = useWindowWidth();
   return width > 500 ? (
     <>
-      <div style={styles.home_page_splash}>
-        <div style={styles.home_page_text}>
-          <h1 style={{ color: "white" }}>Dan Bills Guitars</h1>
+      <Splash>
+        <TextBox>
+          <Header>Dan Bills Guitars</Header>
           <p>
             An acoustic guitar company located in Salt Lake City, Utah
             specializing in steel-string guitars. Also offering repairs and
             custom builds.
           </p>
-        </div>
-        <img
+        </TextBox>
+        <Image
           src={Background}
-          style={styles.home_page_image}
           alt="guitar soundhole"
         />
-      </div>
+      </Splash>
     </>
   )
   :
   (
     <>
       <div>
-        <h1 style={styles.mobile.text}><div>Dan</div><div>Bills</div><div>Guitars</div></h1>
+        <MobileHeader><div>Dan</div><div>Bills</div><div>Guitars</div></MobileHeader>
       </div>
     </>
   )
 };
 export default Home;
-const styles = {
-  home_page_text: {
-    color: "white",
-    position: "absolute",
-    top: "250px",
-    left: "0",
-    width: "100%",
-    background: "rgba(100, 10, 10, 0.7)",
-    paddingLeft: "50px",
-    paddingTop: "10px",
-    paddingBottom: "10px"
-  },
-  home_page_splash: {
-    position: "relative"
-  },
-  home_page_image: {
-    height: "100%",
-    width: "100%"
-  },
-  mobile: {
-    image : {
-      width: "100%",
-    },
-    text: {
-      color: "",
-      fontSize: "50px"
-    }
-  }
-};
+
+const Header = styled.h1`
+  color: white;
+`
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+`
+const Splash = styled.div`
+  position: relative;
+`
+const TextBox = styled.div`
+  color: white;
+  position: absolute;
+  top: 250px;
+  left: 0;
+  width: 100%;
+  background: rgba(100, 10, 10, 0.7);
+  padding-left: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+`
+const MobileHeader = styled.h1`
+  font-size: 50px;
+`
+const MobileImage = styled.img`
+  width: 100%;
+`
+
