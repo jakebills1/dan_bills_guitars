@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Dropzone from "./Dropzone";
 import axios from "axios";
-import { Header, Form } from "semantic-ui-react";
+import { Input, FormGroup, Button, Textarea } from "../ContactForm";
+import { Header } from "../Contact";
 class Edit extends Component {
   state = {
     name: this.props.location.state.name,
@@ -53,29 +54,29 @@ class Edit extends Component {
           height: "100vh"
         }}
       >
-        <Form onSubmit={this.handleSubmit}>
-          <Header as="h1">Edit Listing: </Header>
-          <Form.Group widths="equal">
-            <Form.Input
+        <form>
+          <Header>Edit Listing: </Header>
+          <FormGroup>
+            <Input
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
             />
-            <Form.Input
+            <Input
               name="price"
               value={this.state.price}
               onChange={this.handleChange}
             />
-          </Form.Group>
-          <Form.TextArea
+          </FormGroup>
+          <Textarea
             name="description"
             value={this.state.description}
             onChange={this.handleChange}
           />
           <div style={{ textAlign: "center" }}>
-            <Form.Button color="brown">Submit</Form.Button>
+            <Button>Submit</Button>
           </div>
-        </Form>
+        </form>
         <Dropzone addFile={this.addFile} />
       </div>
     );

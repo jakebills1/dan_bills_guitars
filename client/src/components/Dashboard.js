@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Segment, Button } from "semantic-ui-react";
+import { Segment,} from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import NewGuitarForm from "./admin/NewGuitarForm";
 import { useWindowWidth } from "../hooks/useWindowWidth";
+import {Button} from 'semantic-ui-react'
 const Dashboard = () => {
   const width = useWindowWidth();
   const [availableGuitars, setAvailableGuitars] = useState([]);
@@ -100,13 +101,7 @@ const Dashboard = () => {
     >
       <NewGuitarForm />
       <div
-        style={
-          width > 500
-            ? {
-                display: "flex",
-                justifyContent: "space-evenly"
-              }
-            : {
+        style={{
                 display: "flex",
                 flexDirection: "column"
               }
