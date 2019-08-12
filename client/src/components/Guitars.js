@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
-import { Header, Divider } from "semantic-ui-react";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 const Guitars = ({ guitars }) => {
   const width = useWindowWidth();
@@ -30,11 +29,12 @@ const Guitars = ({ guitars }) => {
             <p>{g.description}</p>
             <Gallery photos={pictures} onClick={openLightbox} />
           </div>
-          <Divider />
+          <hr style={{ borderColor: "black" }} />
         </>
       );
     });
   };
+  const headerMessage = "Available Guitars For Sale";
   return (
     <div
       style={{
@@ -43,9 +43,7 @@ const Guitars = ({ guitars }) => {
         height: "auto"
       }}
     >
-      <Header as={width > 500 ? "h1" : "h2"}>
-        Handmade Guitars Available For Purchase
-      </Header>
+      {width > 500 ? <h1>{headerMessage}</h1> : <h2>{headerMessage}</h2>}
       {renderGuitars()}
       <ModalGateway>
         {viewerIsOpen && (

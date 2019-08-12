@@ -1,14 +1,10 @@
 import React from "react";
-import { Message } from "semantic-ui-react";
+import styled from "styled-components";
 const Flash = ({ message, success }) => {
-  return success ? (
-    <Message positive>
-      <Message.Header>{message}</Message.Header>
-    </Message>
-  ) : (
-    <Message negative>
-      <Message.Header>{message}</Message.Header>
-    </Message>
-  );
+  const FlashBox = styled.div`
+  background-color: ${ success ? "#28a745" : "#dc3545"};
+  text-align: center
+  `
+  return <FlashBox>{message}</FlashBox>
 };
 export default Flash;

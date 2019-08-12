@@ -1,22 +1,25 @@
 import React from "react";
 import ContactForm from "./ContactForm";
-import { Header } from "semantic-ui-react";
+import styled from "styled-components";
 const Contact = () => {
   return (
-    <div
-      style={{
-        backgroundColor: "#bd9476",
-        padding: "20px 5px 0 5px",
-        height: "100vh"
-      }}
-    >
+    <Box>
       <div>
         <Header>For more information:</Header>
         <div>Phone: (801) 382-7362‬</div>
         <div>Email: danbillsguitars@gmail.com</div>
       </div>
       <ContactForm />
-    </div>
+    </Box>
   );
 };
 export default Contact;
+const Box = styled.div`
+  background-color: #bd9476;
+  padding: 20px 5px 0 5px;
+  height: 100vh;
+`
+export const Header = styled.h1`
+  font-weight: bold;
+`
+

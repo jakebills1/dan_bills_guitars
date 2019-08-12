@@ -34,7 +34,7 @@ const Home = () => {
 };
 export default Home;
 
-const Header = styled.h1`
+export const Header = styled.h1`
   color: white;
 `
 const Image = styled.img`

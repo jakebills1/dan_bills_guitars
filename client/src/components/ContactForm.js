@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Header, Form } from "semantic-ui-react";
+import { Header } from "./Contact";
 import Flash from "./Flash";
+import styled from "styled-components";
 class ContactForm extends Component {
   state = {
     email: "",
     body: "",
     name: "",
-    flash: "",
-    showFlash: false,
+    flash: "Message",
+    showFlash: true,
     success: "",
     subject: ""
   };
@@ -58,45 +59,86 @@ class ContactForm extends Component {
       <>
         <br />
         {showFlash && <Flash message={flash} success={success} />}
-        <Form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <Header>Send us a Message: </Header>
-          <Form.Group widths="equal">
-            <Form.Input
-              type="email"
-              label="Your email: "
-              required
-              onChange={this.handleChange}
-              name="email"
-              value={email}
-            />
-            <Form.Input
-              label="Your name: "
-              required
-              onChange={this.handleChange}
-              name="name"
-              value={name}
-            />
-          </Form.Group>
-          <Form.Input
-            label="Subject: "
-            name="subject"
-            value={subject}
-            onChange={this.handleChange}
-            required
-          />
-          <Form.TextArea
-            label="Your Message: "
-            required
-            onChange={this.handleChange}
-            name="body"
-            value={body}
-          />
-          <div style={{ textAlign: "center" }}>
-            <Form.Button color="brown">Send</Form.Button>
+          <FormGroup>
+            <div>
+              <Label>
+                Your Email:
+                <Input
+                  type="email"
+                  required
+                  onChange={this.handleChange}
+                  name="email"
+                  value={email}
+                />
+              </Label>
+            </div>
+            <div>
+              <Label>
+                Your name:
+                <Input
+                  required
+                  onChange={this.handleChange}
+                  name="name"
+                  value={name}
+                />
+              </Label>
+            </div>
+          </FormGroup>
+          <div>
+            <Label>
+              Subject:
+              <Input
+                name="subject"
+                value={subject}
+                onChange={this.handleChange}
+                required
+                style={{ width: "100%" }}
+              />
+            </Label>
           </div>
-        </Form>
+          <div>
+            <Label>
+              Your message:
+              <Textarea
+                required
+                onChange={this.handleChange}
+                name="body"
+                value={body}
+              />
+            </Label>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <button>Submit</button>
+          </div>
+        </form>
       </>
     );
   }
 }
 export default ContactForm;
+const Label = styled.label`
+  display: block;
+  font-family: inherit;
+`;
+const Input = styled.input`
+  width: 550px;
+  display: block;
+  border: none;
+  border-radius: 3px;
+  line-height: 200%;
+`;
+const FormGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+const Textarea = styled.textarea`
+  width: 100%;
+  display: block;
+  border: none;
+  resize: none;
+  border-radius: 3px;
+  line-height: 200%;
+`;
