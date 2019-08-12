@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Flash from "../Flash";
 import Dropzone from "./Dropzone";
-import { Form, Button } from "semantic-ui-react";
+import { Header } from "../Contact";
+import { Input, Textarea, Button, FormGroup } from "../ContactForm";
+import styled from "styled-components";
 import axios from "axios";
 const NewGuitarForm = () => {
   // form state
@@ -62,41 +64,44 @@ const NewGuitarForm = () => {
           </div>
         </>
       ) : (
-        <Form onSubmit={handleSubmit}>
-          <h1>Add a new listing:</h1>
-          <Form.Group widths="equal">
-            <Form.Input
+        <form onSubmit={handleSubmit}>
+          <Header>Add a new listing:</Header>
+          <FormGroup>
+            <ThreeByInput
               name="name"
-              placeholder="Name:"
+              placeholder="Name..."
               onChange={e => setName(e.target.value)}
               required
             />
-            <Form.Input
+            <ThreeByInput
               name="price"
-              placeholder="Price:"
+              placeholder="Price..."
               onChange={e => setPrice(e.target.value)}
               required
             />
-            <Form.Input
+            <ThreeByInput
               name="year"
-              placeholder="Year:"
+              placeholder="Year..."
               onChange={e => setYear(e.target.value)}
               required
             />
-          </Form.Group>
-          <Form.TextArea
+          </FormGroup>
+          <Textarea
             name="description"
             placeholder="Description..."
             onChange={e => setDescription(e.target.value)}
             required
           />
           <div style={{ textAlign: "center" }}>
-            <Form.Button color="brown">Submit Info & Add a Picture</Form.Button>
+            <Button>Submit</Button>
           </div>
-        </Form>
+        </form>
       )}
       {showFlash && <Flash success={success} message={message} />}
     </>
   );
 };
 export default NewGuitarForm;
+const ThreeByInput = styled(Input)`
+  width: 350px;
+`;

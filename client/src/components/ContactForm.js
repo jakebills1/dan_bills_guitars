@@ -63,51 +63,43 @@ class ContactForm extends Component {
           <Header>Send us a Message: </Header>
           <FormGroup>
             <div>
-              <Label>
-                Your Email:
-                <Input
-                  type="email"
-                  required
-                  onChange={this.handleChange}
-                  name="email"
-                  value={email}
-                />
-              </Label>
+              <Input
+                placeholder="Your Email..."
+                type="email"
+                required
+                onChange={this.handleChange}
+                name="email"
+                value={email}
+              />
             </div>
             <div>
-              <Label>
-                Your name:
-                <Input
-                  required
-                  onChange={this.handleChange}
-                  name="name"
-                  value={name}
-                />
-              </Label>
+              <Input
+                placeholder="Your name..."
+                required
+                onChange={this.handleChange}
+                name="name"
+                value={name}
+              />
             </div>
           </FormGroup>
           <div>
-            <Label>
-              Subject:
-              <Input
-                name="subject"
-                value={subject}
-                onChange={this.handleChange}
-                required
-                style={{ width: "100%" }}
-              />
-            </Label>
+            <Input
+              placeholder="Subject..."
+              name="subject"
+              value={subject}
+              onChange={this.handleChange}
+              required
+              style={{ width: "100%" }}
+            />
           </div>
           <div>
-            <Label>
-              Your message:
-              <Textarea
-                required
-                onChange={this.handleChange}
-                name="body"
-                value={body}
-              />
-            </Label>
+            <Textarea
+              placeholder="Your message..."
+              required
+              onChange={this.handleChange}
+              name="body"
+              value={body}
+            />
           </div>
           <div style={{ textAlign: "center" }}>
             <Button>Submit</Button>
@@ -118,36 +110,33 @@ class ContactForm extends Component {
   }
 }
 export default ContactForm;
-const Label = styled.label`
-  display: block;
-  font-family: inherit;
-`;
-const Input = styled.input`
+export const Input = styled.input`
   width: 550px;
   display: block;
   border: none;
   border-radius: 3px;
   line-height: 200%;
+  margin-bottom: 18px;
 `;
-const FormGroup = styled.div`
+export const FormGroup = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
-const Textarea = styled.textarea`
+export const Textarea = styled.textarea`
   width: 100%;
   display: block;
   border: none;
   resize: none;
   border-radius: 3px;
   line-height: 200%;
+  margin-bottom: 18px;
 `;
-const Button = styled.button`
+export const Button = styled.button`
   width: 80px;
   height: 40px;
   font-family: inherit;
   background-color: #c76c3f;
   border-radius: 3px;
   border: transparent;
-  margin-top: 18px;
 `;

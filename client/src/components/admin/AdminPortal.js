@@ -1,6 +1,8 @@
 import React from "react";
 import { AuthConsumer } from "../../providers/AuthProvider";
-import { Form, Segment, Header } from "semantic-ui-react";
+import { Input, Button } from "../ContactForm";
+import { Header } from "../Contact";
+import styled from "styled-components";
 
 class Login extends React.Component {
   state = { email: "", password: "" };
@@ -27,11 +29,11 @@ class Login extends React.Component {
           height: "100vh"
         }}
       >
-        <Header as="h1" textAlign="center">
-          Login
-        </Header>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Input
+        <div style={{ textAlign: "center", marginBottom: "18px" }}>
+          <Header>Login</Header>
+        </div>
+        <form onSubmit={this.handleSubmit}>
+          <FullWidthInput
             label="Email"
             autoFocus
             required
@@ -40,7 +42,7 @@ class Login extends React.Component {
             placeholder="Email"
             onChange={this.handleChange}
           />
-          <Form.Input
+          <FullWidthInput
             label="Password"
             required
             name="password"
@@ -49,12 +51,10 @@ class Login extends React.Component {
             type="password"
             onChange={this.handleChange}
           />
-          <Segment textAlign="center" basic>
-            <Form.Button color="brown" type="submit">
-              Submit
-            </Form.Button>
-          </Segment>
-        </Form>
+          <div style={{ textAlign: "center" }}>
+            <Button>Submit</Button>
+          </div>
+        </form>
       </div>
     );
   }
@@ -69,3 +69,7 @@ export default class ConnectedLogin extends React.Component {
     );
   }
 }
+const FullWidthInput = styled(Input)`
+  box-sizing: border-box;
+  width: 100%;
+`;
