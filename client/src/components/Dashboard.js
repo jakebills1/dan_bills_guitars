@@ -95,7 +95,7 @@ const Dashboard = () => {
       style={{
         backgroundColor: "#bd9476",
         padding: "20px 5px 0 5px",
-        height: "auto"
+        height: "100 vh"
       }}
     >
       <NewGuitarForm />
