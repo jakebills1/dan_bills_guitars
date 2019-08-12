@@ -8,8 +8,8 @@ class ContactForm extends Component {
     email: "",
     body: "",
     name: "",
-    flash: "Message",
-    showFlash: true,
+    flash: "",
+    showFlash: false,
     success: "",
     subject: ""
   };
@@ -110,7 +110,7 @@ class ContactForm extends Component {
             </Label>
           </div>
           <div style={{ textAlign: "center" }}>
-            <button>Submit</button>
+            <Button>Submit</Button>
           </div>
         </form>
       </>
@@ -141,4 +141,13 @@ const Textarea = styled.textarea`
   resize: none;
   border-radius: 3px;
   line-height: 200%;
+`;
+const Button = styled.button`
+  width: 80px;
+  height: 40px;
+  font-family: inherit;
+  background-color: #c76c3f;
+  border-radius: 3px;
+  border: transparent;
+  margin-top: 18px;
 `;
