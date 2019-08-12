@@ -112,7 +112,7 @@ const Dashboard = () => {
           <Segment.Group>{listAvailableGuitars()}</Segment.Group>
         </div>
         <div>
-          <h1>Recent Messages</h1>
+          <h1>{messages.length > 0 ? "Recent Messages" : "No Recent Messages"}</h1>
           <Segment.Group>{listMessages()}</Segment.Group>
         </div>
       </div>
