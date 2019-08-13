@@ -39,7 +39,7 @@ const Guitars = ({ guitars }) => {
     <div
       style={{
         backgroundColor: "#bd9476",
-        padding: "20px 5px 0 5px",
+        padding: "1.7% 0.5% 0 0.5%",
         height: "auto"
       }}
     >
