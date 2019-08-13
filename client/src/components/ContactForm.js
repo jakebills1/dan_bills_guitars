@@ -62,25 +62,21 @@ class ContactForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <Header>Send us a Message: </Header>
           <FormGroup>
-            <div>
-              <Input
-                placeholder="Your Email..."
-                type="email"
-                required
-                onChange={this.handleChange}
-                name="email"
-                value={email}
-              />
-            </div>
-            <div>
-              <Input
-                placeholder="Your name..."
-                required
-                onChange={this.handleChange}
-                name="name"
-                value={name}
-              />
-            </div>
+            <LeftInput
+              placeholder="Your Email..."
+              type="email"
+              required
+              onChange={this.handleChange}
+              name="email"
+              value={email}
+            />
+            <RightInput
+              placeholder="Your name..."
+              required
+              onChange={this.handleChange}
+              name="name"
+              value={name}
+            />
           </FormGroup>
           <div>
             <Input
@@ -111,32 +107,40 @@ class ContactForm extends Component {
 }
 export default ContactForm;
 export const Input = styled.input`
-  width: 550px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   display: block;
   border: none;
-  border-radius: 3px;
+  border-radius: 0.2em;
   line-height: 200%;
-  margin-bottom: 18px;
+  margin-bottom: 1.6%;
+`;
+const LeftInput = styled(Input)`
+  margin-right: 0.5%;
+`;
+const RightInput = styled(Input)`
+  margin-left: 0.5%;
 `;
 export const FormGroup = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 `;
 export const Textarea = styled.textarea`
   width: 100%;
   display: block;
   border: none;
   resize: none;
-  border-radius: 3px;
+  border-radius: 0.2em;
   line-height: 200%;
-  margin-bottom: 18px;
+  margin-bottom: 1.6%;
 `;
 export const Button = styled.button`
-  width: 80px;
-  height: 40px;
+  width: 7%;
+  height: 3em;
   font-family: inherit;
   background-color: #c76c3f;
-  border-radius: 3px;
+  border-radius: 0.2em;
   border: transparent;
 `;

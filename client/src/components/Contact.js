@@ -14,12 +14,11 @@ const Contact = () => {
   );
 };
 export default Contact;
-const Box = styled.div`
+export const Box = styled.div`
   background-color: #bd9476;
-  padding: 20px 5px 0 5px;
+  padding: 1.7% 0.5% 0 0.5%;
   height: 100vh;
-`
+`;
 export const Header = styled.h1`
   font-weight: bold;
-`
-
+`;

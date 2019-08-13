@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { useWindowWidth } from "../hooks/useWindowWidth";
+import { Box } from "./Contact";
 const Guitars = ({ guitars }) => {
   const width = useWindowWidth();
   const [currentImage, setCurrentImage] = useState(0);
@@ -36,13 +37,7 @@ const Guitars = ({ guitars }) => {
   };
   const headerMessage = "Available Guitars For Sale";
   return (
-    <div
-      style={{
-        backgroundColor: "#bd9476",
-        padding: "1.7% 0.5% 0 0.5%",
-        height: "auto"
-      }}
-    >
+    <Box>
       {width > 500 ? <h1>{headerMessage}</h1> : <h2>{headerMessage}</h2>}
       {renderGuitars()}
       <ModalGateway>
@@ -52,7 +47,7 @@ const Guitars = ({ guitars }) => {
           </Modal>
         )}
       </ModalGateway>
-    </div>
+    </Box>
   );
 };
 export default Guitars;
