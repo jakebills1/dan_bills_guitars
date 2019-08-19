@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import NewGuitarForm from "./admin/NewGuitarForm";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { Button } from "semantic-ui-react";
+import { Box } from "./Contact";
+import styled from "styled-components";
 const Dashboard = () => {
   const width = useWindowWidth();
   const [availableGuitars, setAvailableGuitars] = useState([]);
@@ -21,7 +22,7 @@ const Dashboard = () => {
   }, []);
   const listAvailableGuitars = () => {
     return availableGuitars.map(gtr => (
-      <Segment key={gtr.id}>
+      <MySegment key={gtr.id}>
         <div>
           <strong>Name:</strong> {gtr.name}
         </div>
@@ -43,7 +44,7 @@ const Dashboard = () => {
             Delete
           </Button>
         </Button.Group>
-      </Segment>
+      </MySegment>
     ));
   };
   const deleteListing = id => {
@@ -64,7 +65,7 @@ const Dashboard = () => {
   };
   const listMessages = () => {
     return messages.map(msg => (
-      <Segment key={msg.id}>
+      <MySegment key={msg.id}>
         <div>
           <strong>From: </strong> {msg.name}
         </div>
@@ -88,36 +89,35 @@ const Dashboard = () => {
             Delete
           </Button>
         </Button.Group>
-      </Segment>
+      </MySegment>
     ));
   };
   return (
-    <div
-      style={{
-        backgroundColor: "#bd9476",
-        padding: "20px 5px 0 5px",
-        height: "100 vh"
-      }}
-    >
+    <Box>
       <NewGuitarForm />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column"
-        }}
-      >
+      <FlexColumnWrapper>
         <div>
           <h1>Guitars listed for sale</h1>
-          <Segment.Group>{listAvailableGuitars()}</Segment.Group>
+          <FlexColumnWrapper>{listAvailableGuitars()}</FlexColumnWrapper>
         </div>
         <div style={{ marginTop: "2em" }}>
           <h1>
             {messages.length > 0 ? "Recent Messages" : "No Recent Messages"}
           </h1>
-          <Segment.Group>{listMessages()}</Segment.Group>
+          <FlexColumnWrapper>{listMessages()}</FlexColumnWrapper>
         </div>
-      </div>
-    </div>
+      </FlexColumnWrapper>
+    </Box>
   );
 };
 export default Dashboard;
+const FlexColumnWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const MySegment = styled.div`
+  width: 100%;
+  padding: 1.5%;
+  background-color: #fff;
+  border-radius: 0.2em;
+`;

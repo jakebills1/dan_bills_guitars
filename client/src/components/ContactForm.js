@@ -31,7 +31,8 @@ class ContactForm extends Component {
     });
   };
   produceFlash = status => {
-    if (parseInt(status, 10) === 200) {
+    const successStatus = 200;
+    if (parseInt(status, 10) === successStatus) {
       this.setState({ flash: "Message Sent!", showFlash: true, success: true });
     } else {
       this.setState({
@@ -115,11 +116,12 @@ export const Input = styled.input`
   border-radius: 0.2em;
   line-height: 200%;
   margin-bottom: 1.6%;
+  padding-left: 0.5%;
 `;
-const LeftInput = styled(Input)`
+export const LeftInput = styled(Input)`
   margin-right: 0.5%;
 `;
-const RightInput = styled(Input)`
+export const RightInput = styled(Input)`
   margin-left: 0.5%;
 `;
 export const FormGroup = styled.div`
@@ -135,6 +137,7 @@ export const Textarea = styled.textarea`
   border-radius: 0.2em;
   line-height: 200%;
   margin-bottom: 1.6%;
+  padding-left: 0.5%;
 `;
 export const Button = styled.button`
   width: 7%;

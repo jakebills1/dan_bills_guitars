@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import Flash from "../Flash";
 import Dropzone from "./Dropzone";
 import { Header } from "../Contact";
-import { Input, Textarea, Button, FormGroup } from "../ContactForm";
-import styled from "styled-components";
+import {
+  Textarea,
+  Button,
+  FormGroup,
+  LeftInput,
+  RightInput,
+  Input
+} from "../ContactForm";
 import axios from "axios";
 const NewGuitarForm = () => {
   // form state
@@ -67,23 +73,24 @@ const NewGuitarForm = () => {
         <form onSubmit={handleSubmit}>
           <Header>Add a new listing:</Header>
           <FormGroup>
-            <ThreeByInput
+            <LeftInput
               name="name"
               placeholder="Name..."
               onChange={e => setName(e.target.value)}
               required
             />
-            <ThreeByInput
+            <RightInput
               name="price"
               placeholder="Price..."
               onChange={e => setPrice(e.target.value)}
               required
             />
-            <ThreeByInput
+            <Input
               name="year"
               placeholder="Year..."
               onChange={e => setYear(e.target.value)}
               required
+              style={{ marginLeft: "1%" }}
             />
           </FormGroup>
           <Textarea
@@ -102,6 +109,3 @@ const NewGuitarForm = () => {
   );
 };
 export default NewGuitarForm;
-const ThreeByInput = styled(Input)`
-  width: 350px;
-`;

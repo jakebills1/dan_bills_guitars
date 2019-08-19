@@ -3,6 +3,7 @@ import { AuthConsumer } from "../../providers/AuthProvider";
 import { Input, Button } from "../ContactForm";
 import { Header } from "../Contact";
 import styled from "styled-components";
+import { Box } from "../Contact";
 
 class Login extends React.Component {
   state = { email: "", password: "" };
@@ -22,14 +23,8 @@ class Login extends React.Component {
     const { email, password } = this.state;
 
     return (
-      <div
-        style={{
-          backgroundColor: "#bd9476",
-          padding: "20px 5px 0 5px",
-          height: "100vh"
-        }}
-      >
-        <div style={{ textAlign: "center", marginBottom: "18px" }}>
+      <Box>
+        <div style={{ textAlign: "center", marginBottom: "1.5%" }}>
           <Header>Login</Header>
         </div>
         <form onSubmit={this.handleSubmit}>
@@ -55,7 +50,7 @@ class Login extends React.Component {
             <Button>Submit</Button>
           </div>
         </form>
-      </div>
+      </Box>
     );
   }
 }
