@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "./Dropzone";
 import axios from "axios";
 import { Input, FormGroup, Button, Textarea } from "../ContactForm";
-import { Header } from "../Contact";
+import { Header, Box } from "../Contact";
 class Edit extends Component {
   state = {
     name: this.props.location.state.name,
@@ -47,13 +47,7 @@ class Edit extends Component {
   };
   render() {
     return (
-      <div
-        style={{
-          backgroundColor: "#bd9476",
-          padding: "20px 5px 0 5px",
-          height: "100vh"
-        }}
-      >
+      <Box>
         <form>
           <Header>Edit Listing: </Header>
           <FormGroup>
@@ -78,7 +72,7 @@ class Edit extends Component {
           </div>
         </form>
         <Dropzone addFile={this.addFile} />
-      </div>
+      </Box>
     );
   }
 }

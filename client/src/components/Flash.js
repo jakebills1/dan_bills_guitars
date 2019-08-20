@@ -4,9 +4,9 @@ const Flash = ({ message, success }) => {
   const FlashBox = styled.div`
     background-color: ${success ? "#cfffd1" : "#FF9994"};
     text-align: center;
-    border: solid ${success ? "green" : "red"} 1px;
-    border-radius: 3px;
-    padding: 10px 0;
+    border: solid ${success ? "green" : "red"} thin;
+    border-radius: 0.2em;
+    padding: 1% 0;
   `;
   return <FlashBox>{message}</FlashBox>;
 };

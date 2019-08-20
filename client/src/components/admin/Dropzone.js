@@ -25,7 +25,10 @@ const Dropzone = ({ addFile }) => {
           </>
         ) : (
           <>
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p>
+              To add pictures: Drag and drop some files here, or click to select
+              files
+            </p>
             <div style={styles.cloud}>
               <Icon name="cloud upload" size="massive" />
             </div>
@@ -43,14 +46,16 @@ const Dropzone = ({ addFile }) => {
 };
 const styles = {
   dropzone: {
-    width: "300px",
-    height: "300px",
-    border: "1px black dashed",
+    width: "100%",
+    height: "33%",
+    border: "thin black dashed",
     backgroundColor: "#948E8E",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    padding: "1%",
+    marginTop: "5%"
   },
   cloud: {
     display: "flex",
