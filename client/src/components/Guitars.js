@@ -3,7 +3,26 @@ import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { Box } from "../styled_components/main";
+import PropTypes from "prop-types";
 const Guitars = ({ guitars }) => {
+  Guitars.propTypes = {
+    guitars: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        year: PropTypes.number,
+        id: PropTypes.number,
+        description: PropTypes.string,
+        price: PropTypes.string,
+        pictures: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string,
+            width: PropTypes.number,
+            height: PropTypes.number
+          })
+        )
+      })
+    )
+  };
   const width = useWindowWidth();
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
