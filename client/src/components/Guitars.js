@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { useWindowWidth } from "../hooks/useWindowWidth";
-import { Box } from "./Contact";
+import { Box } from "../styled_components/main";
 const Guitars = ({ guitars }) => {
   const width = useWindowWidth();
   const [currentImage, setCurrentImage] = useState(0);

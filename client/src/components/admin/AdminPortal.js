@@ -1,9 +1,10 @@
 import React from "react";
 import { AuthConsumer } from "../../providers/AuthProvider";
-import { Input, Button } from "../ContactForm";
-import { Header } from "../Contact";
-import styled from "styled-components";
-import { Box } from "../Contact";
+import {
+  Button,
+  FullWidthInput
+} from "../../styled_components/form_components/main";
+import { Header, Box } from "../../styled_components/main";
 
 class Login extends React.Component {
   state = { email: "", password: "" };
@@ -64,7 +65,3 @@ export default class ConnectedLogin extends React.Component {
     );
   }
 }
-const FullWidthInput = styled(Input)`
-  box-sizing: border-box;
-  width: 100%;
-`;

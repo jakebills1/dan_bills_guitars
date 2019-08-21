@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import Dropzone from "./Dropzone";
 import axios from "axios";
-import { Input, FormGroup, Button, Textarea } from "../ContactForm";
-import { Header, Box } from "../Contact";
+import {
+  Input,
+  FormGroup,
+  Button,
+  Textarea
+} from "../../styled_components/form_components/main";
+import { Header, Box } from "../../styled_components/main";
+
 class Edit extends Component {
   state = {
     name: this.props.location.state.name,

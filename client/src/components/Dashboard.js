@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import NewGuitarForm from "./admin/NewGuitarForm";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { Button } from "semantic-ui-react";
-import { Box } from "./Contact";
-import styled from "styled-components";
+import { Box, MySegment, FlexColumnWrapper } from "../styled_components/main";
 const Dashboard = () => {
   const width = useWindowWidth();
   const [availableGuitars, setAvailableGuitars] = useState([]);
@@ -111,13 +110,3 @@ const Dashboard = () => {
   );
 };
 export default Dashboard;
-const FlexColumnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const MySegment = styled.div`
-  width: 100%;
-  padding: 1.5%;
-  background-color: #fff;
-  border-radius: 0.2em;
-`;

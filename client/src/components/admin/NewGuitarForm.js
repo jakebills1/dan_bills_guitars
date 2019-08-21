@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Flash from "../Flash";
 import Dropzone from "./Dropzone";
-import { Header } from "../Contact";
+import { Header } from "../../styled_components/main";
 import {
   Textarea,
   Button,
@@ -9,7 +9,7 @@ import {
   LeftInput,
   RightInput,
   Input
-} from "../ContactForm";
+} from "../../styled_components/form_components/main";
 import axios from "axios";
 const NewGuitarForm = () => {
   // form state
