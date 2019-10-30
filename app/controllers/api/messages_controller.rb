@@ -19,11 +19,11 @@ class Api::MessagesController < ApplicationController
   
   private
   
-  def message_params
-    params.require(:message).permit(:name, :email, :body, :subject)
-  end
+    def message_params
+      params.require(:message).permit(:name, :email, :body, :subject)
+    end
 
-  def set_message
-    @message = Message.find(params[:id])
-  end
+    def set_message
+      @message = Message.find(params[:id])
+    end
 end

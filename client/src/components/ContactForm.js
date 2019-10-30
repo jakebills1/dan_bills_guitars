@@ -10,31 +10,29 @@ import {
   Textarea,
   Button
 } from "../styled_components/form_components/main";
+
 class ContactForm extends Component {
   state = {
-    email: "",
-    body: "",
-    name: "",
     flash: "",
     showFlash: false,
-    success: "",
-    subject: ""
+    success: ""
   };
   handleSubmit = e => {
     e.preventDefault();
-    const { email, body, name, subject } = this.state;
+    const data = new FormData(e.target);
     axios
-      .post("/api/email", { email, body, name, subject })
+      .post("/api/email", {
+        email: data.get("email"),
+        body: data.get("body"),
+        name: data.get("name"),
+        subject: data.get("subject")
+      })
       .then(res => this.produceFlash(res.status))
       .catch(err => this.produceFlash(err.status));
     this.setState({
-      email: "",
-      body: "",
-      name: "",
       flash: "",
       showFlash: "",
-      success: "",
-      subject: ""
+      success: ""
     });
   };
   produceFlash = status => {
@@ -50,19 +48,8 @@ class ContactForm extends Component {
       });
     }
   };
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
   render() {
-    const {
-      name,
-      email,
-      body,
-      flash,
-      showFlash,
-      success,
-      subject
-    } = this.state;
+    const { flash, showFlash, success } = this.state;
     return (
       <>
         <br />
@@ -74,36 +61,20 @@ class ContactForm extends Component {
               placeholder="Your Email..."
               type="email"
               required
-              onChange={this.handleChange}
               name="email"
-              value={email}
             />
-            <RightInput
-              placeholder="Your name..."
-              required
-              onChange={this.handleChange}
-              name="name"
-              value={name}
-            />
+            <RightInput placeholder="Your name..." required name="name" />
           </FormGroup>
           <div>
             <Input
               placeholder="Subject..."
               name="subject"
-              value={subject}
-              onChange={this.handleChange}
               required
               style={{ width: "100%" }}
             />
           </div>
           <div>
-            <Textarea
-              placeholder="Your message..."
-              required
-              onChange={this.handleChange}
-              name="body"
-              value={body}
-            />
+            <Textarea placeholder="Your message..." required name="body" />
           </div>
           <div style={{ textAlign: "center" }}>
             <Button>Submit</Button>
