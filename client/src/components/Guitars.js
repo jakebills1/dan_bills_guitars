@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { useWindowWidth } from "../hooks/useWindowWidth";
-import { Box } from "../styled_components/main";
+import { Box, FullBox } from "../styled_components/main";
 import PropTypes from "prop-types";
 const Guitars = ({ guitars }) => {
   Guitars.propTypes = {
@@ -54,8 +54,23 @@ const Guitars = ({ guitars }) => {
       );
     });
   };
+  const checkHeight = () => {
+    return window.document.body.offsetHeight > window.innerHeight;
+  };
   const headerMessage = "Available Guitars For Sale";
-  return (
+  return checkHeight() ? (
+    <FullBox>
+      {width > 500 ? <h1>{headerMessage}</h1> : <h2>{headerMessage}</h2>}
+      {renderGuitars()}
+      <ModalGateway>
+        {viewerIsOpen && (
+          <Modal onClose={closeLightbox}>
+            <Carousel currentIndex={currentImage} views={pictures} />
+          </Modal>
+        )}
+      </ModalGateway>
+    </FullBox>
+  ) : (
     <Box>
       {width > 500 ? <h1>{headerMessage}</h1> : <h2>{headerMessage}</h2>}
       {renderGuitars()}

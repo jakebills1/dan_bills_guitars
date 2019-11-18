@@ -32,6 +32,11 @@ export const Box = styled.div`
   padding: 1.7% 0.5% 0 0.5%;
   height: 100vh;
 `;
+export const FullBox = styled.div`
+  background-color: #bd9476;
+  padding: 1.7% 0.5% 0 0.5%;
+  height: 100%;
+`;
 export const FlexColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
