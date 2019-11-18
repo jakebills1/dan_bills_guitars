@@ -14,7 +14,8 @@ class Edit extends Component {
     name: this.props.location.state.name,
     price: this.props.location.state.price,
     description: this.props.location.state.description,
-    files: []
+    files: [],
+    redirect: false
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -41,7 +42,6 @@ class Edit extends Component {
       });
       axios.post(`/api/guitars/${id}/pictures`, data);
     }
-
     goBack();
   };
   handleChange = ({ target: { name, value } }) => {
@@ -54,7 +54,7 @@ class Edit extends Component {
   render() {
     return (
       <Box>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <Header>Edit Listing: </Header>
           <FormGroup>
             <Input
