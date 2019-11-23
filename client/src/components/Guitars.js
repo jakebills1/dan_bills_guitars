@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { useWindowWidth } from "../hooks/useWindowWidth";
-import { Box, FullBox } from "../styled_components/main";
 import PropTypes from "prop-types";
+import { Container } from "semantic-ui-react";
 const Guitars = ({ guitars }) => {
   Guitars.propTypes = {
     guitars: PropTypes.arrayOf(
@@ -54,34 +54,21 @@ const Guitars = ({ guitars }) => {
       );
     });
   };
-  const checkHeight = () => {
-    return window.document.body.offsetHeight > window.innerHeight;
-  };
   const headerMessage = "Available Guitars For Sale";
-  return checkHeight() ? (
-    <FullBox>
-      {width > 500 ? <h1>{headerMessage}</h1> : <h2>{headerMessage}</h2>}
-      {renderGuitars()}
-      <ModalGateway>
-        {viewerIsOpen && (
-          <Modal onClose={closeLightbox}>
-            <Carousel currentIndex={currentImage} views={pictures} />
-          </Modal>
-        )}
-      </ModalGateway>
-    </FullBox>
-  ) : (
-    <Box>
-      {width > 500 ? <h1>{headerMessage}</h1> : <h2>{headerMessage}</h2>}
-      {renderGuitars()}
-      <ModalGateway>
-        {viewerIsOpen && (
-          <Modal onClose={closeLightbox}>
-            <Carousel currentIndex={currentImage} views={pictures} />
-          </Modal>
-        )}
-      </ModalGateway>
-    </Box>
+  return (
+    <div style={{ backgroundColor: "#bd9476", padding: "1.7% 0.5% 0 0.5%" }}>
+      <Container>
+        {width > 500 ? <h1>{headerMessage}</h1> : <h2>{headerMessage}</h2>}
+        {renderGuitars()}
+        <ModalGateway>
+          {viewerIsOpen && (
+            <Modal onClose={closeLightbox}>
+              <Carousel currentIndex={currentImage} views={pictures} />
+            </Modal>
+          )}
+        </ModalGateway>
+      </Container>
+    </div>
   );
 };
 export default Guitars;
