@@ -48,9 +48,17 @@ export const MySegment = styled.div`
   border-radius: 0.2em;
 `;
 export const FlashBox = styled.div`
-  background-color: ${props => (props.success ? "#cfffd1" : "#FF9994")};
+  background-color: ${props =>
+    props.success == "success" || props.success == "loading"
+      ? "#cfffd1"
+      : "#FF9994"};
   text-align: center;
-  border: solid ${props => (props.success ? "green" : "red")} thin;
+  border: solid
+    ${props =>
+      props.success == "success" || props.success == "loading"
+        ? "green"
+        : "red"}
+    thin;
   border-radius: 0.2em;
   padding: 1% 0;
 `;

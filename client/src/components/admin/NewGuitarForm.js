@@ -23,8 +23,8 @@ const NewGuitarForm = () => {
   const [id, setId] = useState("");
   // flash message state
   const [showFlash, setShowFlash] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState("loading");
+  const [message, setMessage] = useState("Uploading");
   const addFile = file => setFiles([file, ...files]);
   const handleSubmit = e => {
     e.preventDefault();
@@ -44,17 +44,17 @@ const NewGuitarForm = () => {
       files.map((file, index) => {
         return data.append(`file${index}`, file);
       });
+      setShowFlash(true);
       axios
         .post(`/api/guitars/${id}/pictures`, data)
         .then(res => {
-          setSuccess(true);
+          setSuccess("success");
           setMessage("New Guitar Added!");
         })
         .catch(err => {
           setMessage("We have encountered a problem");
-          setSuccess(false);
+          setSuccess("error");
         });
-      setShowFlash(true);
       setShowDropzone(false);
     }
   };
