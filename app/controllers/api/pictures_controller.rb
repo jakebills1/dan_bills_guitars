@@ -21,8 +21,12 @@ class Api::PicturesController < ApplicationController
       file_counter += 1
       set_file file_counter
     end
-    @guitar.pictures.create(pictures)
-    render json: { message: "Successfully added pictures" }
+    pictures = @guitar.pictures.create(pictures)
+    if pictures.all? { |p| p.persisted? }
+      render json: { message: "Successfully added pictures" }
+    else 
+      render json: { message: "Could not add pictures"}, status: 422
+    end
   end
 
   private
