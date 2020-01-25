@@ -1,4 +1,5 @@
 class Api::GuitarsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_guitar, only: [:destroy, :update]
   def index
     guitars = Guitar.all

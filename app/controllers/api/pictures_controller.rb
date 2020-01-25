@@ -1,4 +1,5 @@
 class Api::PicturesController < ApplicationController
+  before_action :authenticate_user!
   def create
     # iterates over files sent in params ( named file0, file1, etc ), and uploads them to cloudinary, then saves them in Database
     file_counter = 0

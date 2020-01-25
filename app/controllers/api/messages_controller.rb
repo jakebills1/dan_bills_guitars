@@ -1,5 +1,7 @@
 class Api::MessagesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_message, only: :destroy
+  
   def create
     message = Message.new(message_params)
     if message.save
