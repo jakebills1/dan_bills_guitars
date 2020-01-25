@@ -6,7 +6,9 @@ const Gallery = () => {
   useEffect(() => {
     axios
       .get("/api/guitars")
-      .then(res => setGuitars(res.data))
+      .then(res => {
+        setGuitars(res.data);
+      })
       .catch(err => console.log(err));
   }, []);
   return <Guitars guitars={guitars} />;
