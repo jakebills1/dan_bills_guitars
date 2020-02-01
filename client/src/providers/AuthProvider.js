@@ -27,7 +27,7 @@ export class AuthProvider extends React.Component {
         history.push("/dashboard");
       })
       .catch(res => {
-        console.log(res);
+        return res;
       });
   };
 

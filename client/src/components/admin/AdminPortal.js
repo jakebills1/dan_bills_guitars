@@ -5,14 +5,20 @@ import {
   FullWidthInput
 } from "../../styled_components/form_components/main";
 import { Header, Box } from "../../styled_components/main";
+import Flash from "../Flash";
 
 class Login extends React.Component {
-  state = { email: "", password: "" };
+  state = {
+    email: "",
+    password: "",
+    loginFailed: false
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
     this.props.auth.handleLogin({ email, password }, this.props.history);
+    this.setState({ loginFailed: true });
   };
 
   handleChange = e => {
@@ -21,7 +27,7 @@ class Login extends React.Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, loginFailed } = this.state;
 
     return (
       <Box>
@@ -51,6 +57,14 @@ class Login extends React.Component {
             <Button>Submit</Button>
           </div>
         </form>
+        {loginFailed && (
+          <Flash
+            success={!loginFailed}
+            message={"The username or password was not correct"}
+          >
+            The username or password was not correct
+          </Flash>
+        )}
       </Box>
     );
   }

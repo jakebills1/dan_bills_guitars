@@ -61,4 +61,5 @@ export const FlashBox = styled.div`
     thin;
   border-radius: 0.2em;
   padding: 1% 0;
+  margin-top: 1%;
 `;
