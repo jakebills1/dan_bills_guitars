@@ -5,7 +5,7 @@ const AuthContext = React.createContext();
 export const AuthConsumer = AuthContext.Consumer;
 
 export class AuthProvider extends React.Component {
-  state = { user: null };
+  state = { user: null, loginFailed: false };
 
   handleRegister = (user, history) => {
     axios
@@ -15,7 +15,7 @@ export class AuthProvider extends React.Component {
         history.push("/");
       })
       .catch(res => {
-        console.log(res);
+        this.setState({ loginFailed: true });
       });
   };
 
@@ -26,8 +26,8 @@ export class AuthProvider extends React.Component {
         this.setState({ user: res.data.data });
         history.push("/dashboard");
       })
-      .catch(res => {
-        return res;
+      .catch(() => {
+        this.setState({ loginFailed: true });
       });
   };
 

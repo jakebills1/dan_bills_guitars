@@ -10,15 +10,13 @@ import Flash from "../Flash";
 class Login extends React.Component {
   state = {
     email: "",
-    password: "",
-    loginFailed: false
+    password: ""
   };
 
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
     this.props.auth.handleLogin({ email, password }, this.props.history);
-    this.setState({ loginFailed: true });
   };
 
   handleChange = e => {
@@ -27,7 +25,8 @@ class Login extends React.Component {
   };
 
   render() {
-    const { email, password, loginFailed } = this.state;
+    const { email, password } = this.state;
+    const { loginFailed } = this.props.auth;
 
     return (
       <Box>
@@ -61,9 +60,7 @@ class Login extends React.Component {
           <Flash
             success={!loginFailed}
             message={"The username or password was not correct"}
-          >
-            The username or password was not correct
-          </Flash>
+          ></Flash>
         )}
       </Box>
     );
