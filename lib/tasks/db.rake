@@ -13,4 +13,13 @@ namespace :db do
     end
   end
 
+  desc "adds thumbnail urls to pictures"
+  task add_thumbnail: :environment do 
+    if Picture.count > 0
+      Picture.where.not(url: nil).each do |pic|
+        pic.update(thumbnail_url: pic.url[0..49] + "c_thumb,w_180/" + pic.url[50..])
+      end
+    end
+  end
+
 end
