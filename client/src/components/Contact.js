@@ -7,7 +7,7 @@ const Contact = () => {
       <div>
         <h1 style={{ fontWeight: "bold" }}>For more information:</h1>
         <div>Phone: (801) 382-7362‬</div>
-        <div><a href="mailto:jdanbills+contact@gmail.com">Email us</a></div>
+        <div><a href="mailto:jdanbills+contact@gmail.com" style={{ color: 'black', textDecoration: 'underline' }}>Email us</a></div>
       </div>
       <ContactForm />
     </Box>
